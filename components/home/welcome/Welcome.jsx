@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from 'react-native'
+import {icons, SIZES} from '../../../constants'
 
 import styles from './welcome.style'
 
