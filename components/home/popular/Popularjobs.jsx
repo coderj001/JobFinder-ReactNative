@@ -6,12 +6,16 @@ import PopularJobCard from '../../common/cards/popular/PopularJobCard'
 import styles from './popularjobs.style'
 import { useRouter } from 'expo-router'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import useFetch from '../../../hook/useFetch'
 
 const Popularjobs = () => {
   const router = useRouter();
-  const isLoading = false
-  const error = false
-
+  const { data, isLoading, error, refetch } = useFetch('search', {
+    query: 'Python developer in Texas, USA',
+    page: '1',
+    num_pages: '1'
+  })
+  console.log(data)
 
 
   return (
@@ -26,7 +30,15 @@ const Popularjobs = () => {
         ) : error ? (
           <Text>Something went worng</Text>
         ) : (
-          <FlatList />
+          <FlatList
+            data={data}
+            renderItem={({ item }) => (
+              <PopularJobCard item={item} />
+            )}
+            keyExtractor={item => item?.job_id}
+            contentContainerStyle={{ columnGap: SIZES.medium }}
+            horizontal
+          />
         )}
       </View>
     </View>
