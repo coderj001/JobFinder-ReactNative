@@ -1,13 +1,11 @@
-name: CI CD Main
+name: "CI CD Main"
 
 on:
+  push:
+    branches: [ master ]
   pull_request:
-  branches:
-    - "master"
-
-  push: 
-  branches:
-    - "master"
+    # The branches below must be a subset of the branches above
+    branches: [ master ]
 
 jobs:
   install-and-test:
