@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
-import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from 'react-native'
-import { icons, SIZES } from '../../../constants'
+import React, { useState } from 'react';
+import {
+  View, Text, TextInput, TouchableOpacity, Image, FlatList,
+} from 'react-native';
+import { icons, SIZES } from '../../../constants';
 
-import styles from './welcome.style'
+import styles from './welcome.style';
 
-const jobType = ["Full-Time", "Part-Time", "Contractor"]
+const jobType = ['Full-Time', 'Part-Time', 'Contractor'];
 
-const Welcome = () => {
-  const [activeJobType, setActiveJobType] = useState('Full-Time')
+function Welcome() {
+  const [activeJobType, setActiveJobType] = useState('Full-Time');
 
   return (
     <View>
@@ -21,15 +23,16 @@ const Welcome = () => {
             style={styles.searchInput}
             value=""
             onChange={() => { }}
-            placeholder='What are you looking for?'
+            placeholder="What are you looking for?"
           />
         </View>
         <TouchableOpacity
           style={styles.searchBtn}
           onPress={() => { }}
         >
-          <Image source={icons.search}
-            resizeMode='contain'
+          <Image
+            source={icons.search}
+            resizeMode="contain"
             style={styles.searchBtnImage}
           />
         </TouchableOpacity>
@@ -50,12 +53,12 @@ const Welcome = () => {
               <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
             </TouchableOpacity>
           )}
-          keyExtractor={item => item}
+          keyExtractor={(item) => item}
           contentContainerStyle={{ columnGap: SIZES.small }}
         />
       </View>
     </View>
-  )
+  );
 }
 
-export default Welcome
+export default Welcome;

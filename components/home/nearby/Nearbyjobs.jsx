@@ -1,20 +1,24 @@
-import React, { useState } from 'react'
-import { View, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
-import { COLORS, SIZES } from '../../../constants'
-import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard'
+import React, { useState } from 'react';
+import {
+  View, Text, ActivityIndicator, TouchableOpacity,
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import { COLORS, SIZES } from '../../../constants';
+import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard';
 
-import { useRouter } from 'expo-router'
-import useFetch from '../../../hook/useFetch'
+import useFetch from '../../../hook/useFetch';
 
-import styles from './nearbyjobs.style'
+import styles from './nearbyjobs.style';
 
-const Nearbyjobs = () => {
+function Nearbyjobs() {
   const router = useRouter();
-  const { data, isLoading, error, refetch } = useFetch('search', {
+  const {
+    data, isLoading, error, refetch,
+  } = useFetch('search', {
     query: 'Python developer in Kolkata, India',
     page: '1',
-    num_pages: '1'
-  })
+    num_pages: '1',
+  });
 
   return (
     <View style={styles.container}>
@@ -38,7 +42,7 @@ const Nearbyjobs = () => {
         )}
       </View>
     </View>
-  )
+  );
 }
 
 export default Nearbyjobs;
