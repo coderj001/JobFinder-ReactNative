@@ -5,5 +5,4 @@ updates:
     schedule:
       interval: "daily"
     allow:
-      # Update all dependencies and devDependencies
       - dependency_type: "all"
