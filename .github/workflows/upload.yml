@@ -21,10 +21,14 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the APK
+      - name: Authenticate with EAS
         run: |
-          npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/
-          cd android && ./gradlew assembleRelease
+          echo "{\"cli\": {\"username\": \"${{ secrets.EAS_USERNAME }}\",\"password\": \"${{ secrets.EAS_PASSWORD }}\"}}" > ~/.eas.json
+          npx eas-cli login
+
+      - name: Build the app
+        run: |
+          npx eas-cli build -p android
 
       - name: Upload the APK to Uploadcare
         run: |
