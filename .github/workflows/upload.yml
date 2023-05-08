@@ -23,8 +23,11 @@ jobs:
 
       - name: Authenticate with EAS
         run: |
-          echo "{\"cli\": {\"username\": \"${{ secrets.EAS_USERNAME }}\",\"password\": \"${{ secrets.EAS_PASSWORD }}\"}}" > ~/.eas.json
+          echo "{\"cli\": {\"username\": \"$EAS_USERNAME\",\"password\": \"$EAS_PASSWORD\"}}" > ~/.eas.json
           npx eas-cli login
+        env:
+          EAS_USERNAME: ${{ secrets.EAS_USERNAME }}
+          EAS_PASSWORD: ${{ secrets.EAS_PASSWORD }}
 
       - name: Build the app
         run: |
@@ -35,4 +38,3 @@ jobs:
           curl -F "UPLOADCARE_PUB_KEY=${{ secrets.UPLOADCARE_PUB_KEY }}" \
                -F "file=@./android/app/build/outputs/apk/release/app-release.apk" \
                "https://upload.uploadcare.com/base/"
-
