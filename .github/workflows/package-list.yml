@@ -30,8 +30,8 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --global user.name "Raju Ghorai"
-          git config --global credential.username "coderj001"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           git add README.md
           git commit -m "Update package list" || true
           git push origin HEAD:master
