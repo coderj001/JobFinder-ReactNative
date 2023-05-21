@@ -30,8 +30,8 @@ jobs:
 
       - name: Commit changes
         run: |
-          git config --local user.email "amirajubolchi001@gmail.com"
-          git config --local user.name "Raju Ghorai"
+          git config user.name "Raju Ghorai"
+          git config credential.username "coderj001"
           git add README.md
           git commit -m "Update package list" || true
           git push origin HEAD:master
